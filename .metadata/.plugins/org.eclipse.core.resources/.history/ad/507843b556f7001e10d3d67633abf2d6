@@ -1,0 +1,8 @@
+package com.vti.testing;
+
+import java.util.Properties;
+
+public class main {
+Properties properties = new Properties();
+properties.load(new FileInputStream("src/main/resource/database.properties"));
+}

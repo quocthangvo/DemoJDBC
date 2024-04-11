@@ -1,0 +1,11 @@
+package com.vti.testing;
+
+import java.io.FileInputStream;
+import java.util.Properties;
+
+public class main {
+	public static void main(String[] args) {
+		
+	}
+
+}

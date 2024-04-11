@@ -1,0 +1,50 @@
+package com.vti.testing;
+
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.IOException;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+import java.sql.SQLException;
+import java.util.Properties;
+
+public class Transaction {
+	public static Connection getConnection()
+			throws SQLException, ClassNotFoundException, IOException, FileNotFoundException {
+		Properties properties = new Properties();
+		properties.load(new FileInputStream("src/main/resource/database.properties"));
+
+		String url = properties.getProperty("url");
+		String username = properties.getProperty("username");
+		String password = properties.getProperty("password");
+
+		Class.forName("com.mysql.cj.jdbc.Driver");
+
+		Connection connection = DriverManager.getConnection(url, username, password);
+	}
+
+	private static void createUser(Connection connection) throws SQLException {
+		String sql = "INSERT INTO `User` (`username`,`email`,`password`,`firstName`, `lastName`,`gender`,`date_Of_Birth`"
+				+ "VALUE (?,?,?,?,?,?,?,)";
+		PreparedStatement preparedStatement = connection.prepareStatement(sql);
+
+		String username = "voquocthang", email = "thang@gmail.com", password = "123456", fistName = "Võ",
+				lastName = "Quốc Thắng", gender = "M", dataOfBirth = "2002-10-23", address = "TPHCM",
+				phone = "0964467214", role = "EMPLOYEE";
+		int status =0;
+		
+		preparedStatement.setString(1, username);
+		preparedStatement.setString(2, username);
+		preparedStatement.setString(3, username);
+		preparedStatement.setString(4, username);
+		preparedStatement.setString(5, username);
+		preparedStatement.setString(6, username);
+		preparedStatement.setString(7, username);
+		preparedStatement.setString(8, username);
+		preparedStatement.setString(9, username);
+		preparedStatement.setString(10, username);
+		preparedStatement.setString(11, username);
+		
+	}
+}
